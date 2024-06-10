@@ -8,7 +8,7 @@ const authSlice = createSlice({
       name: "",
       email: "",
     },
-    token: "",
+    token: null,
     isLoggedIn: false,
     isRefreshing: false,
     error: false,

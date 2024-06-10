@@ -6,6 +6,7 @@ import AuthNav from "../AuthNav/AuthNav";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <header>
       <div>

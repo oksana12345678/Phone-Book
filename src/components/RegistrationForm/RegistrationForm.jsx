@@ -27,19 +27,27 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values, action) => {
     const { name, email, password } = values;
-    dispatch(register({ name, email, password }));
+    dispatch(
+      register({
+        name,
+        email,
+        password,
+      })
+    
+    );
+    console.log(name, email, password);
     action.resetForm();
   };
 
   return (
     <Formik
+      onSubmit={handleSubmit}
       initialValues={{ name: "", email: "", password: "" }}
       validationSchema={registerSchema}
-      onSubmit={handleSubmit}
     >
       <Form>
         <div>
-          <label htmlFor={nameId}>Name</label>
+          <label htmlFor={nameId}> Username</label>
           <Field type="text" name="name" id={nameId} />
           <ErrorMessage name="name" component="p" />
         </div>

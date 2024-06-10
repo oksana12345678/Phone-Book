@@ -5,6 +5,7 @@ import { selectLoading } from "../../redux/contacts/selectors";
 import Loading from "../../components/Loading/Loading";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
+import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
@@ -13,6 +14,7 @@ const ContactsPage = () => {
   }, [dispatch]);
   return (
     <div>
+      <DocumentTitle>Your Contacts</DocumentTitle>
       <ContactForm />
       <ContactList />
       <div>{isLoading && <Loading />}</div>
