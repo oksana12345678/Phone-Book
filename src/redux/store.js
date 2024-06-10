@@ -22,9 +22,9 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactReducer,
+    filters: filterReducer,
   },
-  contacts: contactReducer,
-  filters: filterReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

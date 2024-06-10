@@ -39,6 +39,7 @@ export default function ContactForm() {
             id={formNameId}
             type="text"
             name="name"
+            placeholder="Enter your name"
           />
           <ErrorMessage className={css.error} name="name" component="span" />
         </div>
@@ -49,6 +50,7 @@ export default function ContactForm() {
             id={formNumberId}
             type="tel"
             name="number"
+            placeholder="Enter your phone number"
           />
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>

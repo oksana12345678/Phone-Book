@@ -1,0 +1,11 @@
+.welcomeText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

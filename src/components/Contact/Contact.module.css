@@ -1,21 +1,48 @@
 .listItemContainer {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  justify-content: center;
 }
 .listItemPice {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
 .deleteButton {
   background-color: rgb(223, 10, 10);
   color: aliceblue;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .deleteButton:hover {
   background-color: rgb(233, 130, 130);
 }
 .contactName {
   text-overflow: ellipsis;
-  max-width: 112px;
   overflow: hidden;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fafaff80;
+  text-transform: capitalize;
+  width: 220px;
+  padding-left: 8px;
+  height: 24px;
+}
+.buttonChange {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgb(4, 54, 255);
+  color: aliceblue;
+}
+.buttonChange:hover {
+  background-color: rgb(57, 112, 253);
 }

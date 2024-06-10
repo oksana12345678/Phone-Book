@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContacts } from "./operations";
+import {
+  addContact,
+  changeContact,
+  deleteContact,
+  fetchContacts,
+} from "./operations";
 import { createSelector } from "@reduxjs/toolkit";
 import { selectContacts } from "./selectors";
 import { selectNameFilter } from "../filters/selectors";
+import { logOut } from "../auth/operations";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -44,7 +50,24 @@ const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleError);
+      .addCase(deleteContact.rejected, handleError)
+      .addCase(changeContact.pending, handlePending)
+      .addCase(changeContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = false;
+        const index = state.items.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+        if (index !== -1) {
+          state[index] = action.payload;
+        }
+      })
+      .addCase(changeContact.rejected, handleError)
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
+        state.loading = false;
+      });
   },
 });
 
@@ -52,18 +75,9 @@ export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, selectNameFilter) => {
     return contacts.filter((contact) => {
-      if ("id" in contact && "name" in contact && "number" in contact) {
-        if (
-          typeof contact.id === "string" &&
-          typeof contact.name === "string" &&
-          typeof contact.number === "string"
-        ) {
-          return contact.name
-            .toLowerCase()
-            .includes(selectNameFilter.toLowerCase());
-        }
-      }
-      return false;
+      const matchesName = contact.name.toLowerCase().includes(selectNameFilter);
+      const matchesNumber = contact.number.includes(selectNameFilter);
+      return matchesName || matchesNumber;
     });
   }
 );
