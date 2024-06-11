@@ -7,7 +7,7 @@ const AuthNav = () => {
         Register
       </NavLink>
       <NavLink className={css.link} to="/login">
-        Lig In
+        Log In
       </NavLink>
     </div>
   );

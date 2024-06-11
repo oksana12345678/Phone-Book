@@ -7,13 +7,14 @@
   color: rgb(232, 233, 234);
   text-decoration: none;
   background-color: rgb(0, 0, 255);
-  padding: 8px 16px;
-  width: 60px;
+  width: 72px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.5s;
 }
 .link:hover {
   background-color: rgb(1, 104, 248);

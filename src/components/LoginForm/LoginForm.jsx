@@ -3,7 +3,23 @@ import { useId } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import * as Yup from "yup";
+import css from "./LoginForm.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const showToast = (message, type) => {
+  toast(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: type === "success" ? "light" : "colored",
+    type: type,
+  });
+};
 const LoginForm = () => {
   const emailId = useId();
   const passwordId = useId();
@@ -24,10 +40,10 @@ const LoginForm = () => {
     dispatch(logIn({ email, password }))
       .unwrap()
       .then(() => {
-        console.log("login success");
+        showToast("Login successful!", "success");
       })
       .catch(() => {
-        console.log("login error");
+        showToast("Login failed!", "error");
       });
     action.resetForm();
   };
@@ -37,27 +53,40 @@ const LoginForm = () => {
       validationSchema={contactsSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
-        <div>
+      <Form className={css.form}>
+        <div className={css.container}>
           <label htmlFor={emailId}>Email</label>
-          <Field type="email" name="email" id={emailId} />
+          <Field
+            className={css.input}
+            type="email"
+            name="email"
+            id={emailId}
+            placeholder="Enter your email..."
+          />
           <ErrorMessage
+            className={css.errorMessage}
             name="email"
             component="p"
-            placeholder="Enter your email!"
           />
         </div>
-        <div>
+        <div className={css.container}>
           <label htmlFor={passwordId}>Password</label>
           <Field
+            className={css.input}
             type="password"
             name="password"
             id={passwordId}
-            placeholder="Enter your password!"
+            placeholder="Enter your password..."
           />
-          <ErrorMessage name="password" component="p" />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="password"
+            component="p"
+          />
         </div>
-        <button type="submit">Log In</button>
+        <button className={css.buttonSub} type="submit">
+          Log In
+        </button>
       </Form>
     </Formik>
   );

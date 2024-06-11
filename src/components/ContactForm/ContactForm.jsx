@@ -4,6 +4,21 @@ import { useId } from "react";
 import css from "./ContactForm.module.css";
 import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+const showToast = (message, type) => {
+  toast(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: type === "success" ? "light" : "colored",
+    type: type,
+  });
+};
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -21,7 +36,14 @@ export default function ContactForm() {
   });
   const handleSubmit = (values, actions) => {
     const { name, number } = values;
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, number }))
+      .unwrap()
+      .then(() => {
+        showToast("Contact add successful!", "success");
+      })
+      .catch(() => {
+        showToast("Contact add failed!", "error");
+      });
     actions.resetForm();
   };
   return (

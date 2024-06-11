@@ -15,7 +15,7 @@ const SearchBox = () => {
   };
   return (
     <div className={css.filter}>
-      <label htmlFor={finedId}>Find contacts by name</label>
+      <label htmlFor={finedId}>Find contacts </label>
       <input
         className={css.filterInput}
         id={finedId}
@@ -23,6 +23,7 @@ const SearchBox = () => {
         value={filterQuery}
         onChange={handleFilter}
         name="name"
+        placeholder="Enter name or number..."
       />
     </div>
   );

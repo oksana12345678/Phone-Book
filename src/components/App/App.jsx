@@ -7,6 +7,7 @@ import { refreshUser } from "../../redux/auth/operations";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import { ToastContainer } from "react-toastify";
 const HomePage = lazy(() => import("../../page/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
   import("../../page/RegistrationPage/RegistrationPage")
@@ -25,6 +26,7 @@ function App() {
     <b>Refreshing user...</b>
   ) : (
     <Layout>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
