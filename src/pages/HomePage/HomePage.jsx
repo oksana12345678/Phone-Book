@@ -11,6 +11,10 @@ const HomePage = () => {
           <FaPhoneSquareAlt />
           Welcome to your phone book!
         </h1>
+        <p className={css.desc}>
+          After authorization you can add your contacts and save them in this
+          app.
+        </p>
       </div>
     </>
   );
