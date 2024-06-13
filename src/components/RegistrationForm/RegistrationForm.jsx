@@ -32,11 +32,11 @@ const RegistrationForm = () => {
       .max(20, "Too Long!")
       .required("Required"),
     email: Yup.string()
-      .min(5, "too Short!")
+      .min(7, "too Short!")
       .max(30, "Too Long!")
       .required("Required"),
     password: Yup.string()
-      .min(5, "too Short!")
+      .min(7, "too Short!")
       .max(30, "Too Long!")
       .required("Required"),
   });

@@ -3,8 +3,9 @@ import * as Yup from "yup";
 import { useId } from "react";
 import css from "./ContactForm.module.css";
 import { addContact } from "../../redux/contacts/operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { selectUser } from "../../redux/auth/selectors";
 
 const showToast = (message, type) => {
   toast(message, {
@@ -24,6 +25,8 @@ export default function ContactForm() {
   const dispatch = useDispatch();
   const formNameId = useId();
   const formNumberId = useId();
+  const { name } = useSelector(selectUser);
+
   const contactsSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -47,39 +50,47 @@ export default function ContactForm() {
     actions.resetForm();
   };
   return (
-    <Formik
-      className={css.contactForm}
-      validationSchema={contactsSchema}
-      onSubmit={handleSubmit}
-      initialValues={{ name: "", number: "" }}
-    >
-      <Form className={css.contactForm}>
-        <div className={css.inputContainer}>
-          <label htmlFor={formNameId}>Name</label>
-          <Field
-            className={css.nameInput}
-            id={formNameId}
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-          />
-          <ErrorMessage className={css.error} name="name" component="span" />
-        </div>
-        <div className={css.inputContainer}>
-          <label htmlFor={formNumberId}>Number</label>
-          <Field
-            className={css.nameInput}
-            id={formNumberId}
-            type="tel"
-            name="number"
-            placeholder="Enter your phone number"
-          />
-          <ErrorMessage className={css.error} name="number" component="span" />
-        </div>
-        <button className={css.buttonSubmit} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+    <div className={css.container}>
+      <p className={css.welcome}>Welcome, {name}</p>
+
+      <Formik
+        className={css.contactForm}
+        validationSchema={contactsSchema}
+        onSubmit={handleSubmit}
+        initialValues={{ name: "", number: "" }}
+      >
+        <Form className={css.contactForm}>
+          <div className={css.inputContainer}>
+            <label htmlFor={formNameId}>Name</label>
+            <Field
+              className={css.nameInput}
+              id={formNameId}
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+            />
+            <ErrorMessage className={css.error} name="name" component="span" />
+          </div>
+          <div className={css.inputContainer}>
+            <label htmlFor={formNumberId}>Number</label>
+            <Field
+              className={css.nameInput}
+              id={formNumberId}
+              type="tel"
+              name="number"
+              placeholder="Enter your phone number"
+            />
+            <ErrorMessage
+              className={css.error}
+              name="number"
+              component="span"
+            />
+          </div>
+          <button className={css.buttonSubmit} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 }

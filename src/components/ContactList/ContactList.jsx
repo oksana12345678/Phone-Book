@@ -6,15 +6,17 @@ import { selectFilteredContacts } from "../../redux/contacts/slice";
 const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
   return (
-    <ul className={css.list}>
-      {contacts.map((contact) => {
-        return (
-          <li className={css.listItem} key={contact.id}>
-            <Contact contact={contact} />
-          </li>
-        );
-      })}
-    </ul>
+    <div className={css.container}>
+      <ul className={css.list}>
+        {contacts.map((contact) => {
+          return (
+            <li className={css.listItem} key={contact.id}>
+              <Contact contact={contact} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

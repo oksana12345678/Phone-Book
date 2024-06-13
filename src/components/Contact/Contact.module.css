@@ -1,61 +1,66 @@
-.listItemContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: center;
+@media screen and (min-width: 320px) {
+  .listItemContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+  .listItemPice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .deleteButton {
+    background-color: rgb(223, 10, 10);
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    border-radius: 4px;
+    width: 92px;
+    height: 32px;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .deleteButton:hover {
+    background-color: rgb(233, 130, 130);
+  }
+  .contactName {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fafaff80;
+    text-transform: capitalize;
+    width: 220px;
+    padding-left: 8px;
+    height: 24px;
+    color: rgb(225, 225, 226);
+  }
+  .buttonChange {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgb(4, 54, 255);
+    color: aliceblue;
+    border: none;
+    border-radius: 4px;
+    width: 92px;
+    height: 32px;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .buttonChange:hover {
+    background-color: rgb(57, 112, 253);
+  }
 }
-.listItemPice {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.buttonContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-.deleteButton {
-  background-color: rgb(223, 10, 10);
-  color: aliceblue;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  border: none;
-  border-radius: 4px;
-  width: 92px;
-  height: 32px;
-  justify-content: center;
-  cursor: pointer;
-}
-.deleteButton:hover {
-  background-color: rgb(233, 130, 130);
-}
-.contactName {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #fafaff80;
-  text-transform: capitalize;
-  width: 220px;
-  padding-left: 8px;
-  height: 24px;
-  color: rgb(225, 225, 226);
-}
-.buttonChange {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background-color: rgb(4, 54, 255);
-  color: aliceblue;
-  border: none;
-  border-radius: 4px;
-  width: 92px;
-  height: 32px;
-  justify-content: center;
-  cursor: pointer;
-}
-.buttonChange:hover {
-  background-color: rgb(57, 112, 253);
+@media screen and (min-width: 768px) {
+  
 }
