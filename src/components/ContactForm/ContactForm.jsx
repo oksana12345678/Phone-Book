@@ -37,18 +37,20 @@ export default function ContactForm() {
       .max(12, "Too Long!")
       .required("Required"),
   });
+
   const handleSubmit = (values, actions) => {
     const { name, number } = values;
     dispatch(addContact({ name, number }))
       .unwrap()
       .then(() => {
         showToast("Contact add successful!", "success");
+        actions.resetForm();
       })
       .catch(() => {
         showToast("Contact add failed!", "error");
       });
-    actions.resetForm();
   };
+
   return (
     <div className={css.container}>
       <p className={css.welcome}>Welcome, {name}</p>
