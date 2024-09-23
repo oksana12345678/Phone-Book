@@ -22,14 +22,16 @@ const showToast = (message, type) => {
   });
 };
 
-export default function Contact({ contact: { id, name, number } }) {
+export default function Contact({ contact: { _id, name, phoneNumber } }) {
   const dispatch = useDispatch();
+
   const handleDelete = () => {
-    dispatch(openModal(id));
+    dispatch(openModal(_id));
   };
+
   const handleChange = (values) => {
-    const { name, number } = values;
-    dispatch(changeContact({ id, name, number }))
+    const { name, phoneNumber } = values;
+    dispatch(changeContact({ _id, name, phoneNumber }))
       .unwrap()
       .then(() => {
         showToast("Edit success!", "success");
@@ -38,10 +40,11 @@ export default function Contact({ contact: { id, name, number } }) {
         showToast("Edit failed!", "error");
       });
   };
+
   return (
     <>
       <Formik
-        initialValues={{ name: name, number: number }}
+        initialValues={{ name: name, phoneNumber: phoneNumber }}
         onSubmit={handleChange}
       >
         <Form className={css.listItemContainer}>
@@ -50,7 +53,7 @@ export default function Contact({ contact: { id, name, number } }) {
           </label>
           <label className={css.listItemPice}>
             <FaPhone />
-            <Field className={css.contactName} name="number" />
+            <Field className={css.contactName} name="phoneNumber" />
           </label>
           <div className={css.buttonContainer}>
             <button className={css.buttonChange} type="submit">

@@ -54,8 +54,8 @@ const RegistrationForm = () => {
       .then(() => {
         showToast("Registration successful!", "success");
       })
-      .catch(() => {
-        showToast("Registration failed!", "error");
+      .catch((error) => {
+        showToast(`Registration failed! ${error}`, "error");
       });
 
     action.resetForm();

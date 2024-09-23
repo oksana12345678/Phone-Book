@@ -4,10 +4,12 @@ import { lazy, useEffect } from "react";
 import Layout from "../Layout/Layout";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../../redux/auth/operations";
-import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { selectIsRefreshing, selectToken } from "../../redux/auth/selectors";
 import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
   import("../../pages/RegistrationPage/RegistrationPage")
@@ -20,8 +22,12 @@ const ContactsPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const IsRefreshing = useSelector(selectIsRefreshing);
+  const token = useSelector(selectToken);
+
   useEffect(() => {
-    dispatch(refreshUser());
+    if (token) {
+      dispatch(refreshUser());
+    }
   }, [dispatch]);
 
   return IsRefreshing ? (

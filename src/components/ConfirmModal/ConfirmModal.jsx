@@ -28,6 +28,7 @@ const showToast = (message, type) => {
 const ConfirmModal = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
   const contactIdToDelete = useSelector(selectContactIdToDelete);
+
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -41,8 +42,8 @@ const ConfirmModal = () => {
         .then(() => {
           showToast("Contact  deleted successfully!", "success");
         })
-        .catch(() => {
-          showToast("Contact  deleted failed!", "error");
+        .catch((error) => {
+          showToast(`Contact  deleted failed!,${error}`, "error");
         });
       dispatch(closeModal());
     }

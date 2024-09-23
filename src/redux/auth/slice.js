@@ -16,7 +16,7 @@ const authSlice = createSlice({
       name: "",
       email: "",
     },
-    token: null,
+    accessToken: "",
     isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
@@ -26,22 +26,23 @@ const authSlice = createSlice({
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.data.user;
+        state.accessToken = action.payload.data.accessToken;
         state.isLoggedIn = true;
+        console.log("LogIn Fulfilled Payload:", action.payload);
       })
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.data.user;
+        state.accessToken = action.payload.data.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, (state) => {
         state.user = { name: "", email: "" };
-        state.token = null;
+        state.accessToken = null;
         state.isLoggedIn = false;
       })
       .addCase(logOut.rejected, handleRejected)
@@ -50,7 +51,8 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.data.user;
+        state.accessToken = action.payload.data.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

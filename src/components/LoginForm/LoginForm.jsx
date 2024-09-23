@@ -5,7 +5,6 @@ import { logIn } from "../../redux/auth/operations";
 import * as Yup from "yup";
 import css from "./LoginForm.module.css";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const showToast = (message, type) => {
   toast(message, {
@@ -35,6 +34,7 @@ const LoginForm = () => {
       .max(30, "Too Long!")
       .required("Required!"),
   });
+
   const handleSubmit = (values, action) => {
     const { email, password } = values;
     dispatch(logIn({ email, password }))
@@ -42,8 +42,9 @@ const LoginForm = () => {
       .then(() => {
         showToast("Login successful!", "success");
       })
-      .catch(() => {
-        showToast("Login failed!", "error");
+      .catch((error) => {
+        console.log(error);
+        showToast(`Login failed! ${error}`, "error");
       });
     action.resetForm();
   };

@@ -32,26 +32,27 @@ export default function ContactForm() {
       .min(2, "Too Short!")
       .max(30, "Too Long!")
       .required("Required"),
-    number: Yup.string()
+    phoneNumber: Yup.string()
       .min(9, "Too Short!")
       .max(12, "Too Long!")
       .required("Required"),
   });
 
   const handleSubmit = (values, actions) => {
-    const { name, number } = values;
-    dispatch(addContact({ name, number }))
+    const { name, phoneNumber } = values;
+    dispatch(addContact({ name, phoneNumber }))
       .unwrap()
       .then(() => {
         showToast("Contact add successful!", "success");
         actions.resetForm();
       })
-      .catch(() => {
-        showToast("Contact add failed!", "error");
+      .catch((error) => {
+        showToast(`"Contact add failed! ${error}`, "error");
       });
   };
 
   return (
+    //TODO Перенести це в окремий компонент
     <div className={css.container}>
       <p className={css.welcome}>Welcome, {name}</p>
 
@@ -59,7 +60,7 @@ export default function ContactForm() {
         className={css.contactForm}
         validationSchema={contactsSchema}
         onSubmit={handleSubmit}
-        initialValues={{ name: "", number: "" }}
+        initialValues={{ name: "", phoneNumber: "" }}
       >
         <Form className={css.contactForm}>
           <div className={css.inputContainer}>
@@ -79,12 +80,12 @@ export default function ContactForm() {
               className={css.nameInput}
               id={formNumberId}
               type="tel"
-              name="number"
+              name="phoneNumber"
               placeholder="Enter your phone number"
             />
             <ErrorMessage
               className={css.error}
-              name="number"
+              name="phoneNumber"
               component="span"
             />
           </div>
@@ -96,10 +97,3 @@ export default function ContactForm() {
     </div>
   );
 }
-console.log(1);
-setTimeout(() => {
-  console.log(2);
-}, 100);
-setTimeout(() => {
-  console.log(3);
-}, 0);
