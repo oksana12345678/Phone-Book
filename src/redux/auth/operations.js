@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
+// axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
 
-// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://localhost:3000";
 
 axios.defaults.withCredentials = true;
 
@@ -62,8 +62,8 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const response = await axios.post(
-        "https://validation-5dsv.onrender.com/users/current",
-        {},
+        "/users/current",
+
         {
           withCredentials: true,
         }

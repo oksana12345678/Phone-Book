@@ -9,19 +9,33 @@
     margin: 0 auto;
     margin-bottom: 40px;
   }
+
+  .label {
+    color: rgb(213, 223, 245);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
   .filterInput {
+    color: rgb(80, 130, 242);
     padding-left: 16px;
     width: 240px;
-    height: 32px;
+    height: 40px;
     border-radius: 4px;
-    border-bottom: 1px solid #827c7c;
-    border-left: 1px solid #827c7c;
-    border-right: 1px solid #827c7c;
-    border-top: none;
+    background-color: transparent;
+    border: 1px solid rgb(42, 48, 82);
     outline: transparent;
+  }
+
+  .filterInput::placeholder {
+    color: rgb(47, 56, 117);
   }
 }
 @media screen and (min-width: 768px) {
+  .filter {
+    align-items: flex-start;
+  }
   .filterInput {
     width: 260px;
     height: 40px;

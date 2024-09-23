@@ -15,7 +15,9 @@ const SearchBox = () => {
   };
   return (
     <div className={css.filter}>
-      <label htmlFor={finedId}>Find contacts </label>
+      <label className={css.label} htmlFor={finedId}>
+        Find contacts
+      </label>
       <input
         className={css.filterInput}
         id={finedId}

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { selectUser } from "../../redux/auth/selectors";
 
+import { IoPersonAddOutline } from "react-icons/io5";
+
 const showToast = (message, type) => {
   toast(message, {
     position: "top-right",
@@ -54,7 +56,7 @@ export default function ContactForm() {
   return (
     //TODO Перенести це в окремий компонент
     <div className={css.container}>
-      <p className={css.welcome}>Welcome, {name}</p>
+      <p className={css.welcome}>Welcome {name}</p>
 
       <Formik
         className={css.contactForm}
@@ -64,7 +66,9 @@ export default function ContactForm() {
       >
         <Form className={css.contactForm}>
           <div className={css.inputContainer}>
-            <label htmlFor={formNameId}>Name</label>
+            <label className={css.label} htmlFor={formNameId}>
+              Name
+            </label>
             <Field
               className={css.nameInput}
               id={formNameId}
@@ -75,7 +79,9 @@ export default function ContactForm() {
             <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.inputContainer}>
-            <label htmlFor={formNumberId}>Number</label>
+            <label className={css.label} htmlFor={formNumberId}>
+              Number
+            </label>
             <Field
               className={css.nameInput}
               id={formNumberId}
@@ -90,7 +96,7 @@ export default function ContactForm() {
             />
           </div>
           <button className={css.buttonSubmit} type="submit">
-            Add contact
+            <IoPersonAddOutline /> Add contact
           </button>
         </Form>
       </Formik>

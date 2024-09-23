@@ -4,10 +4,12 @@
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
-    margin: 0 auto;
     align-items: center;
     justify-content: center;
+    height: 600px;
+    min-width: 300px;
   }
+
   .listItem {
     display: flex;
     align-items: center;
@@ -18,14 +20,13 @@
     padding: 16px;
     width: 276px;
   }
+
   .listItem:hover {
     border: 1px solid #078cde;
   }
 }
+
 @media screen and (min-width: 768px) {
-  .container {
-    padding: 0 32px;
-  }
   .listItem {
     padding: 24px;
     width: 294px;
