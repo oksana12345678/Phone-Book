@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "../common/Layout/Layout";
 import RestrictedRoute from "../common/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../common/PrivateRoute/PrivateRoute";
+import Loading from "../common/Loading/Loading";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
@@ -31,7 +32,7 @@ function App() {
   }, [dispatch]);
 
   return IsRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loading />
   ) : (
     <Layout>
       <ToastContainer />
