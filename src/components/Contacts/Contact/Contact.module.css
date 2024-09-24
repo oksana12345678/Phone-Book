@@ -1,0 +1,84 @@
+@media screen and (min-width: 320px) {
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .listItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .editIcon {
+    color: var(--input-placeholder-primary-color);
+  }
+
+  .deleteIcon {
+    color: var(--red-primary-color);
+  }
+
+  .valuesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .listItemPice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: transparent;
+    border-bottom: 1px solid var(--input-border-primary-color);
+    text-transform: capitalize;
+    width: 180px;
+    padding-left: 8px;
+    height: 24px;
+    color: var(--text-primary-color);
+  }
+
+  .icon {
+    color: var(--input-text-primary-color);
+  }
+
+  .buttonContainer {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .deleteButton {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border: none;
+    width: 40px;
+    height: 32px;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* .deleteButton:hover {
+    background-color: rgb(233, 130, 130);
+  } */
+
+  .buttonChange {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 32px;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+  }
+}
+@media screen and (min-width: 768px) {
+}

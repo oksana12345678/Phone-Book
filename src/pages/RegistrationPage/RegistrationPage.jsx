@@ -1,5 +1,5 @@
-import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import DocumentTitle from "../../components/common/DocumentTitle/DocumentTitle";
+import RegistrationForm from "../../components/WrapperLoginAndRegisterPages/RegistrationForm/RegistrationForm";
 
 const RegistrationPage = () => {
   return (

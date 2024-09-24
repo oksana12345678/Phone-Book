@@ -1,14 +1,14 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { lazy, useEffect } from "react";
-import Layout from "../Layout/Layout";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../../redux/auth/operations";
 import { selectIsRefreshing, selectToken } from "../../redux/auth/selectors";
-import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from "../common/Layout/Layout";
+import RestrictedRoute from "../common/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "../common/PrivateRoute/PrivateRoute";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>

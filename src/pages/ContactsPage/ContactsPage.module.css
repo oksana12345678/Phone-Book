@@ -9,7 +9,7 @@
 
   .contactsListContainer {
     height: 500px;
-    margin-top: 32px;
+    margin-top: 24px;
     display: flex;
     overflow: auto;
   }
@@ -19,12 +19,11 @@
   .container {
     padding: 0 32px;
     flex-direction: row;
+    justify-content: space-evenly;
   }
 
   .contactsListContainer {
- 
-    margin-top: 80px;
-   
+    margin-top: 180px;
   }
 }
 
@@ -32,13 +31,12 @@
   .container {
     padding: 0 42px;
     display: flex;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-evenly;
   }
 
   .contactsListContainer {
     height: 500px;
-    margin-top: 80px;
+    margin-top: 180px;
     display: flex;
     overflow: auto;
   }

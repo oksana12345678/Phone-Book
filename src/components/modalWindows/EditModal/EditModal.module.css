@@ -1,0 +1,80 @@
+.modal {
+  position: absolute;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(28, 29, 38),
+    rgb(28, 29, 38)
+  );
+  height: 300px;
+  width: 280px;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.modalWindow {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.listItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contactName {
+  padding-left: 28px;
+  width: 240px;
+  height: 40px;
+  border: 1px solid rgb(59, 67, 116);
+  border-radius: 6px;
+  background-color: transparent;
+  color: rgb(80, 130, 242);
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.contactName:focus {
+  color: rgb(158, 187, 255);
+}
+
+.contactName::placeholder {
+  color: rgb(47, 56, 117);
+}
+
+.listItemPice {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translate(2px, -50%);
+  color: rgb(80, 130, 242);
+}
+
+.buttonChange {
+  color: rgb(28, 29, 38);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  background: rgb(80, 130, 242);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.34);
+  transition: box-shadow 0.5s;
+}
+
+.buttonChange:hover {
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
