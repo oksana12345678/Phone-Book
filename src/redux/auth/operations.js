@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
-
-// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://localhost:3000";
 
 axios.defaults.withCredentials = true;
+// axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
+// axios.defaults.baseURL = "https://n5xf4lmx-300.euw.devtunnels.ms/";
 
 const setAuthHeader = (accessToken) => {
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -58,15 +58,12 @@ export const refreshUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
-
     try {
       setAuthHeader(persistedToken);
       const response = await axios.post(
         "/users/current",
-
-        {
-          withCredentials: true,
-        }
+        {},
+        { withCredentials: true }
       );
       setAuthHeader(response.data.data.accessToken);
       console.log(response.data);
