@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000";
-
 axios.defaults.withCredentials = true;
-// axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
+
+// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
 // axios.defaults.baseURL = "https://n5xf4lmx-300.euw.devtunnels.ms/";
 
 const setAuthHeader = (accessToken) => {
@@ -60,15 +60,18 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       setAuthHeader(persistedToken);
+      // debugger;
       const response = await axios.post(
         "/users/current",
         {},
         { withCredentials: true }
       );
+      // debugger;
       setAuthHeader(response.data.data.accessToken);
       console.log(response.data);
       return response.data;
     } catch (error) {
+      // debugger;
       console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
