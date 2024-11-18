@@ -3,9 +3,9 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-// axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
-// axios.defaults.baseURL = "https://n5xf4lmx-300.euw.devtunnels.ms/";
+axios.defaults.baseURL = "http://localhost:3000";
+// axios.defaults.baseURL = "https://validation-5dsv.onrender.com";
+// axios.defaults.baseURL = "https://5pwqd2fp-3000.euw.devtunnels.ms/";
 
 const setAuthHeader = (accessToken) => {
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -62,9 +62,9 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       // debugger;
       const response = await axios.post(
-        "/users/current",
-        {},
-        { withCredentials: true }
+        "/auth/current",
+        {}
+        // { withCredentials: true }
       );
       // debugger;
       setAuthHeader(response.data.data.accessToken);
