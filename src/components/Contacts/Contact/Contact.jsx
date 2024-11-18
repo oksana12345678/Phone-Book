@@ -25,8 +25,8 @@ export default function Contact({ id, name, phoneNumber }) {
 
   return (
     <>
-      <RxAvatar className={css.avatar} />
-      <div className={css.listItemContainer}>
+      <div className={css.avatarAndButtons}>
+        <RxAvatar className={css.avatar} />
         <div className={css.buttonContainer}>
           <button
             className={css.buttonChange}
@@ -43,13 +43,15 @@ export default function Contact({ id, name, phoneNumber }) {
             <MdDeleteForever className={css.deleteIcon} />
           </button>
         </div>
+      </div>
+      <div className={css.ItemContainer}>
         <div className={css.valuesContainer}>
-          <p className={css.listItemPice}>
+          <p className={css.ItemPice}>
             <FaUser className={css.icon} />
             {name}
             {/*  <span className={css.contactName}></span> */}
           </p>
-          <p className={css.listItemPice}>
+          <p className={css.ItemPice}>
             <FaPhone className={css.icon} />
             {phoneNumber}
             {/* <span className={css.contactName}></span> */}
